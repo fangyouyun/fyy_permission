@@ -2,9 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>角色添加</title>
 </head>
 <body>
-$END$
+    <form method="POST" action="{% url "permission:addrole" %}">
+        {% csrf_token %}
+        角色名称：<input type="text" name="role" value=""><br/><br/>
+        角色描述：<input type="text" name="description" value=""><br/><br/>
+        是否可用：<input type="radio" name="enable" value="1">可用&nbsp;<input type="radio" name="enable" value="2">不可用<br/><br/>
+        备注：<textarea name="remark" rows="8" cols="25"></textarea><br/><br/>
+        <input type="submit" value="提&nbsp;交"/>
+    </form>
 </body>
 </html>

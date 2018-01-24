@@ -2,9 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>用户登录</title>
 </head>
 <body>
-$END$
+    {% if errorCode == "login" %}
+         <h1>用户登录</h1>
+        <form method="POST" id="loginId" action="{% url "permission:login" %}">
+            {% csrf_token %}
+            用户名：<input type="text" name="username" value="">
+            密码：<input type="text" name="pwd" value="">
+            <div>
+                <input type="submit" value="提交">
+                <a href="/">注册</a>
+            </div>
+        </form>
+    {% else %}
+
+    {% endif %}
 </body>
 </html>

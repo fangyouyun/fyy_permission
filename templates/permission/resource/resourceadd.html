@@ -1,10 +1,46 @@
+{% load static from staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>资源添加</title>
 </head>
+<script src="{% static "js/jquery-3.3.1.js"%}"></script>
+<script type="text/javascript">
+    {% comment %}$(function () {
+        $.ajax({
+            cache: "false",
+            type: "GET",
+            url: "{% url "permission:resourceselect" %}",
+            dataType: "json",
+            data: {"id":1},
+            async: true,
+            success: function (data) {
+                $.each(data, function (i, value) {
+                    alert(data)
+                    $("#parentId").append("<option value="+value.id+">"+value.name+"</option>");
+                });
+            }
+        })
+    });{% endcomment %}
+</script>
 <body>
-$END$
+    <form method="POST" action="">
+        {% csrf_token %}
+        资源名称：<input type="text" name="name" value=""><br/><br/>
+        资源描述：<input type="text" name="des" value=""><br/><br/>
+        资源类型：<input type="text" name="type"><br/><br/>
+        显示顺序：<input type="number" name="sort"><br/><br/>
+        所属父类：   <select name="p_id" id="parentId">
+                        <option name="p_id" value="0">顶级</option>
+                        {% for foo in list %}
+                             <option name="p_id" value="{{ foo.id }}">{{ foo.name }}</option>
+                        {% endfor %}
+                    </select><br/><br/>
+        资源路径：<input name="url" type="text"><br/><br/>
+        是否可用：<input type="radio" name="avaliable" value="1">可用&nbsp;<input type="radio" name="avaliable" value="2">不可用<br/><br/>
+        备注：<textarea name="remark" rows="8" cols="25"></textarea><br/><br/>
+        <input type="submit" value="提&nbsp;交"/>
+    </form>
 </body>
 </html>

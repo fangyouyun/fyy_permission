@@ -2,9 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+    <h1 style="color:red; text-align:left">角色表信息：</h1>
+    <table title="角色表" id="" cellpadding="10" style="color: black">
+        <thead>
+            <tr>
+                <td>角色</td>
+                <td>角色描述</td>
+                <td>是否可用</td>
+                <td>备注</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for role in rolelist %}
+                <tr>
+                    <td>{{ role.role }}</td>
+                    <td>{{ role.description }}</td>
+                    <td>{{ role.enabled }}</td>
+                    <td>{{ role.remark }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>

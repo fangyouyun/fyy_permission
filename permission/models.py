@@ -10,7 +10,7 @@ from django.db import models
 class FyyUsers(models.Model):
     user_name = models.CharField(max_length=255)
     pwd = models.CharField(max_length=255)
-    sex = models.IntegerField(default=0)
+    sex = models.IntegerField()
     phone = models.CharField(max_length=30)
     email = models.CharField(max_length=255)
     class Meta:
@@ -19,9 +19,9 @@ class FyyUsers(models.Model):
 
 # 用户角色关系表
 class FyyUsersRole(models.Model):
-    user_id = models.BigIntegerField(default=0)
-    role_id = models.BigIntegerField(default=0)
-    create_id = models.BigIntegerField(default=0)
+    user_id = models.BigIntegerField()
+    role_id = models.BigIntegerField()
+    create_id = models.BigIntegerField()
     crt_time = models.DateTimeField()
     class Meta:
         ordering = ["id"]
@@ -32,9 +32,9 @@ class FyyRole(models.Model):
     role = models.CharField(max_length=255)
     description = models.CharField(max_length=255)
     enabled = models.BooleanField(default=True)
-    create_id = models.BigIntegerField(default=0)
+    create_id = models.BigIntegerField()
     crt_time = models.DateTimeField()
-    update_id = models.BigIntegerField(default=0)
+    update_id = models.BigIntegerField()
     update_time = models.DateTimeField()
     remark = models.TextField(max_length=500)
     class Meta:
@@ -43,9 +43,9 @@ class FyyRole(models.Model):
 
 # 角色权限关系
 class FyyRolePermission(models.Model):
-    role_id = models.BigIntegerField(default=0)
-    permission_id = models.BigIntegerField(default=0)
-    create_id = models.BigIntegerField(default=0)
+    role_id = models.BigIntegerField()
+    permission_id = models.BigIntegerField()
+    create_id = models.BigIntegerField()
     crt_time = models.DateTimeField()
     class Meta:
         ordering = ["id"]
@@ -53,11 +53,11 @@ class FyyRolePermission(models.Model):
 
 # 权限
 class FyyPermission(models.Model):
-    name = models.BigIntegerField(default=0)
+    name = models.BigIntegerField()
     des = models.CharField(max_length=255)
     type = models.CharField(max_length=255)
-    sort = models.IntegerField(default=0)
-    p_id = models.BigIntegerField(default=0)
+    sort = models.IntegerField()
+    p_id = models.BigIntegerField()
     p_ids = models.CharField(max_length=255)
     url = models.CharField(max_length=255)
     permission = models.CharField(max_length=255)
